@@ -1,6 +1,6 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback} from "react";
 import {useDropzone} from "react-dropzone";
-
+import formatSize from "~/lib/formatSize";
 
 interface FileUploaderProps {
     onFileSelect?: (file: File | null) => void;
@@ -33,8 +33,9 @@ const FileUploader = ({onFileSelect}: FileUploaderProps) => {
                 </div>
 
                 {file ? (
-                    <div>
-                    
+                    <div className="space-y-2">
+                        <p className="text-lg font-semibold text-gray-600">{file.name}</p>
+                        <p className="text-sm text-gray-500">{formatSize(file.size)}</p>
                     </div>
                 ): (
                     <div>
